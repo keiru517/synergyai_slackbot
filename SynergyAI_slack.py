@@ -4,7 +4,7 @@ from slack_bolt.adapter.flask import SlackRequestHandler
 from flask import Flask, request
 import openai
 
-openai.api_key = "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"
+openai.api_key = "YOUR_OPENAI_API_KEY"
 app = Flask(__name__)
 # Initializes your app with your bot token and signing secret
 slack_app = App(
