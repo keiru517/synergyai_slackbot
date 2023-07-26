@@ -8,8 +8,8 @@ openai.api_key = "YOUR_OPENAI_API_KEY"
 app = Flask(__name__)
 # Initializes your app with your bot token and signing secret
 slack_app = App(
-    token="xoxb-5568538082343-5601729811140-5okmA1MJzTyce7VC1bzOdgPY",
-    signing_secret="2f94b59c1ba1b8d0ce18b9d3f229eea7",
+    token="BOT_TOKEN",
+    signing_secret="SINGING_SECRET",
     raise_error_for_unhandled_request=True
 )
 
