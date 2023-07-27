@@ -62,6 +62,6 @@ schedule.every().day.at("18:01").do(send_message)
 # Start your app
 if __name__ == "__main__":
     app.run(port=int(os.environ.get("PORT", 5000)))
-    while True:
-        schedule.run_pending()
-        time.sleep(60) 
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(60) 
