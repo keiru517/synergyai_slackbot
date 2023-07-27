@@ -5,7 +5,9 @@ from flask import Flask, request
 import openai
 import schedule
 import time
+from dotenv import load_dotenv
 
+load_dotenv()
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 app = Flask(__name__)
