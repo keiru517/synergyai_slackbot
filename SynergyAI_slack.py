@@ -28,7 +28,7 @@ def answer(message, say):
     print(message['channel'])
     # say(f"Hello, glad to see you <@{user}>!")
     # say(channel=message['channel'],text=get_from_chatgpt(text))
-    say(channel="#syai-playground" ,text=f"Hello, glad to see you <@{user}>!")
+    say(channel=os.environ.get("CHANNEL_ID") ,text=f"Hello, glad to see you <@{user}>!")
 
 
 @app.route("/slack/events", methods=["POST"])
