@@ -52,7 +52,7 @@ def get_from_chatgpt(prompt):
 
 
 def send_message():
-    channel_id = "#daily-wins"
+    channel_id = "C05H8R9M8JX"
     message = ":wave: Team, let's celebrate our daily wins! Every win counts, whether it's finishing a project, learning a skill, or making progress towards our goals. Share your successes to stay motivated and inspired. Keep up the great work!"
     slack_app.client.chat_postMessage(channel=channel_id, text=message)
     
