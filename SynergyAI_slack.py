@@ -3,8 +3,11 @@ from slack_bolt import App
 from slack_bolt.adapter.flask import SlackRequestHandler
 from flask import Flask, request
 import openai
+import schedule
+import time
 
-openai.api_key = "YOUR_OPENAI_API_KEY"
+openai.api_key = os.environ.get("OPENAI_API_KEY")
+
 app = Flask(__name__)
 # Initializes your app with your bot token and signing secret
 slack_app = App(
@@ -21,12 +24,15 @@ def answer(message, say):
     user = message['user']
     text = message['text']
     print(message['channel'])
-    say(f"Hello, glad to see you <@{user}>!")
+    # say(f"Hello, glad to see you <@{user}>!")
     # say(channel=message['channel'],text=get_from_chatgpt(text))
+    say(channel="#syai-playground" ,text=f"Hello, glad to see you <@{user}>!")
+
 
 @app.route("/slack/events", methods=["POST"])
 def slack_events():
     return slack_handler.handle(request)
+
 
 def get_from_chatgpt(prompt):
     response = openai.Completion.create(
@@ -42,7 +48,18 @@ def get_from_chatgpt(prompt):
     response = response['choices'][0]['text']
     return response
 
+
+def send_message():
+    channel_id = "#daily-wins"
+    message = ":wave: Team, let's celebrate our daily wins! Every win counts, whether it's finishing a project, learning a skill, or making progress towards our goals. Share your successes to stay motivated and inspired. Keep up the great work!"
+    slack_app.client.chat_postMessage(channel=channel_id, text=message)
+    
+
+schedule.every().day.at("18:01").do(send_message)
+
 # Start your app
 if __name__ == "__main__":
     app.run(port=int(os.environ.get("PORT", 5000)))
-    
+    while True:
+        schedule.run_pending()
+        time.sleep(60) 

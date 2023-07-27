@@ -1,0 +1,4 @@
+slack_bolt
+schedule
+openai
+flask
