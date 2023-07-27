@@ -21,8 +21,8 @@ def answer(message, say):
     user = message['user']
     text = message['text']
     print(message['channel'])
-    # say(f"Hello, glad to see you <@{user}>!")
-    say(channel=message['channel'],text=get_from_chatgpt(text))
+    say(f"Hello, glad to see you <@{user}>!")
+    # say(channel=message['channel'],text=get_from_chatgpt(text))
 
 @app.route("/slack/events", methods=["POST"])
 def slack_events():
